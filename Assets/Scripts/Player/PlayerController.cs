@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
 	
 	private float nextJumpTime = 0;
 
-	private float moveThreshold = 0.5f;
+	private float moveThreshold = 1f;
 	
 	
 	// Use this for initialization
