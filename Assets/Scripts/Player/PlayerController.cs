@@ -12,10 +12,14 @@ public class PlayerController : MonoBehaviour {
 	/** Impulse to apply to player to get him jumping. */
 	public float JumpImpulse = 18;
 	
+	/** The player's animated model. */
+	public GameObject Model;
+	
 	private Transform t;
 	
 	private float nextJumpTime = 0;
 
+	private float moveThreshold = 0.5f;
 	
 	
 	// Use this for initialization
@@ -25,9 +29,16 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update () {
 		
+		// Go fullscreen on enter.
+		if (Input.GetKeyDown(KeyCode.Return))
+			Screen.fullScreen = !Screen.fullScreen;
+		
 		// Can the player race?
 		if (Time.time >= 10)
 			UpdateInput();
+		
+		// Update player's animation.
+		UpdateAnimation();
 	}
 	
 	void UpdateInput()
@@ -48,4 +59,16 @@ public class PlayerController : MonoBehaviour {
 		}
 		
 	}
+	
+	void UpdateAnimation()
+	{
+		bool moving = rigidbody.velocity.magnitude > moveThreshold;
+		Animation animation = Model.animation;
+		
+		if (moving && !animation.IsPlaying("Run"))
+			animation.Play("Run", AnimationPlayMode.Mix);
+		else if (!moving && !animation.IsPlaying("Idle"))
+			animation.Play("Idle", AnimationPlayMode.Mix);
+	} 
+	
 }
