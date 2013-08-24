@@ -6,7 +6,7 @@ public class FadeInAtStart : MonoBehaviour {
 	public float Delay = 1;
 	public float Duration = 1;
 	
-	void Awake () {
+	void Start() {
 	 StartCoroutine(FadeInSound());
 	}
 	
