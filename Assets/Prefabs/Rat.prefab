@@ -223,7 +223,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.45936418, y: 21.3242245, z: .25}
+  m_LocalPosition: {x: 4.79736805, y: 21.1895142, z: .25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -528,10 +528,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252cef87e637e4241a2490695064d15d, type: 3}
   m_Name: 
-  RunImpulse: 24
+  RunImpulse: 22
   JumpInterval: 1.5
   JumpImpulse: 1500
-  JumpProbability: .699999988
+  JumpProbability: .5
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
