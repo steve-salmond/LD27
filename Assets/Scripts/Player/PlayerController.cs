@@ -3,44 +3,61 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	
-	/** The world (moved when player travels forward/backward). */
-	public Transform World;
+	/** Impulse to apply to player to get him running. */
+	public float RunImpulse = 18;
 	
-	/** Maximum angular speed for the player w.r.t. the world. (degrees per second) */
+	/** Time between jumps. */
+	public float JumpInterval = 2;
+	
+	/** Impulse to apply to player to get him jumping. */
+	public float JumpImpulse = 18;
+	
+	/** Maximum angular speed for the player. (degrees per second) */
 	public float RunSpeedMax = 18;
 	
-	/** Time taken for player to accelerate to max run speed (seconds). */
-	public float RunSmoothTime = 1;
+	/** Threshold for player to be considered to be 'on the ground'. */
+	public float GroundedDistance = 1.7f;
 	
+	public bool Grounded
+		{ get; private set; }
 	
-	/** Player's target angular speed (degrees per second) */
-	private float targetSpeed = 0;
-
-	/** Player's current angular speed (degrees per second) */
-	private float runSpeed = 0;
+	private Transform t;
 	
-	/** Player's angular acceleration. */
-	private float runAcceleration = 0;	
-
+	private float nextJumpTime = 0;
 
 	
 	
 	// Use this for initialization
 	void Start () {
-	
+		t = transform;
 	}
 	
-	// Update is called once per frame
+	void FixedUpdate() 
+	{
+		Ray ray = new Ray(t.position, -t.position);
+		Grounded = Physics.Raycast(ray, GroundedDistance);
+	}
+	
 	void Update () {
-		
+		UpdateInput();
+	}
+	
+	void UpdateInput()
+	{
+		// Get player's axes.
+		Vector3 up = t.position.normalized;
+		Vector3 right = Vector3.Cross(up, Vector3.forward);
 		
 		// Control player's movement over the world.
-		targetSpeed = Input.GetAxis("Horizontal") * RunSpeedMax;
-		runSpeed = Mathf.SmoothDamp(runSpeed, targetSpeed, ref runAcceleration, RunSmoothTime);
+		float f = Input.GetAxis("Horizontal") * RunImpulse;
+		rigidbody.AddForce(right * f);
 		
-		// Update world transform according to run input.
-		World.Rotate(0, 0, runSpeed * Time.deltaTime);
-			
+		// Add player jump.
+		if (Input.GetButtonDown("Jump") && Time.time >= nextJumpTime)
+		{
+			rigidbody.AddForce(up * JumpImpulse);
+			nextJumpTime = Time.time + JumpInterval;
+		}
 		
 	}
 }
