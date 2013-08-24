@@ -1,0 +1,15 @@
+*.sln
+*.csproj
+*.pidb
+*.db
+*.userprefs
+*.blend1
+*.blend2
+*.apk
+
+Art
+Library
+Temp
+Build
+iOSBuild
+*.unityproj
