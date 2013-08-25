@@ -5,15 +5,16 @@ public class FadeInAtStart : MonoBehaviour {
 	
 	public float Delay = 1;
 	public float Duration = 1;
+	public float VolumeScale = 1;
 	
 	void Start() {
-		AudioListener.volume = 0;
+		audio.volume = 0;
 	 	StartCoroutine(FadeInSound());
 	}
 	
 	IEnumerator FadeInSound()
 	{
-		AudioListener.volume = 0;
+		audio.volume = 0;
 		
 		yield return new WaitForSeconds(Delay);
 		
@@ -21,10 +22,10 @@ public class FadeInAtStart : MonoBehaviour {
 		float end = start + Duration;
 		while (Time.time < end)
 		{
-			AudioListener.volume = Mathf.Clamp((Time.time - start) / Duration, 0, 1);
+			audio.volume = VolumeScale * Mathf.Clamp((Time.time - start) / Duration, 0, 1);
 			yield return new WaitForEndOfFrame();
 		}
 		
-		AudioListener.volume = 1;
+		audio.volume = 1;
 	}
 }
