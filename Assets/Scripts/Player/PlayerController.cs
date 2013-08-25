@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour {
 	
 	private Vector3 last;
 	
+	private float startTime = 0;
+	
 	/** Player controller instance. */
 	public static PlayerController Instance;
 	
@@ -68,6 +70,7 @@ public class PlayerController : MonoBehaviour {
 		t = transform;
 		Progress = 0;
 		last = t.position;
+		startTime = Time.time;
 	}
 	
 	void Update () {
@@ -75,10 +78,11 @@ public class PlayerController : MonoBehaviour {
 		// Schedule level reload on race completion.
 		if (!Finished && Lap <= 0)
 			Invoke("Reload", 10);
-		
+
 		// Are we racing?
 		Finished = (Lap <= 0);
-		Racing = (Time.time >= 10) && !Finished;
+		float t = Time.time - startTime;
+		Racing = (t >= 10) && !Finished;
 		
 		// Go fullscreen on enter.
 		if (Input.GetKeyDown(KeyCode.Return))
