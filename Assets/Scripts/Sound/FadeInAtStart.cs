@@ -7,7 +7,8 @@ public class FadeInAtStart : MonoBehaviour {
 	public float Duration = 1;
 	
 	void Start() {
-	 StartCoroutine(FadeInSound());
+		AudioListener.volume = 0;
+	 	StartCoroutine(FadeInSound());
 	}
 	
 	IEnumerator FadeInSound()
