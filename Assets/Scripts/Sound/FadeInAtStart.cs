@@ -26,6 +26,6 @@ public class FadeInAtStart : MonoBehaviour {
 			yield return new WaitForEndOfFrame();
 		}
 		
-		audio.volume = 1;
+		audio.volume = VolumeScale;
 	}
 }
