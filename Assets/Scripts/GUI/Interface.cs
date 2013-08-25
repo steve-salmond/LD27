@@ -4,6 +4,7 @@ using System.Collections;
 public class Interface : MonoBehaviour {
 
 	public Texture Text;
+	public Texture Rules;
 	
 	public Rect[] NumberBounds;
 	public Rect PlaceBounds;
@@ -24,6 +25,23 @@ public class Interface : MonoBehaviour {
 			OnGUIRacing();
 		else if (PlayerController.Instance.Finished)
 			OnGUIFinished();
+		else
+			OnGUIAboutToStart();
+	}
+	
+	void OnGUIAboutToStart()
+	{
+		// Get screen dimensions.
+		float w = Screen.width;
+		float h = Screen.height;
+		float cw = w * 0.5f;
+		float ch = h * 0.5f;
+		
+		float tw = w * 0.25f;
+		float th = tw * 0.5f;
+		
+		// Draw race over text.
+		Graphics.DrawTexture(new Rect(cw - tw * 0.5f, h - th - 30, tw, th), Rules);
 	}
 		
 	void OnGUIRacing()
