@@ -588,8 +588,8 @@ MonoBehaviour:
   m_Name: 
   RunImpulse: 22
   JumpInterval: 1.5
-  JumpImpulse: 1500
-  JumpProbability: .5
+  JumpImpulse: 1550
+  JumpProbability: .300000012
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

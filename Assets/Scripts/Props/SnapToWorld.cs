@@ -5,6 +5,8 @@ using System.Collections;
 public class SnapToWorld : MonoBehaviour
 {
 	
+	public float Height = 0;
+	
 	private Transform t;
 	
 	private const float radius = 20;
@@ -21,7 +23,7 @@ public class SnapToWorld : MonoBehaviour
 		if (!t)
 			t = transform;
 		
-		t.position = t.position.normalized * radius;
+		t.position = t.position.normalized * (radius + Height);
 		t.LookAt(t.position - new Vector3(0, 0, 1), t.position);
 	}
 	

@@ -80,7 +80,7 @@ GameObject:
   - 82: {fileID: 8200000}
   - 114: {fileID: 11400006}
   m_Layer: 10
-  m_Name: Hare
+  m_Name: Tortoise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -225,8 +225,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.40007138, y: 21.3260136, z: 0}
-  m_LocalScale: {x: .899999976, y: .899999976, z: .899999976}
+  m_LocalPosition: {x: 8.18634033, y: 19.8307514, z: 0}
+  m_LocalScale: {x: .589546204, y: .589546204, z: .589546204}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 0}
@@ -265,7 +265,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100018}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -.238490909, y: -.0500000753, z: .556927443}
+  m_LocalPosition: {x: -.276088089, y: -.0500001162, z: .621861875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400016}
@@ -303,7 +303,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bcddfb70b48417a4491e5c95d2243fd2, type: 2}
+  - {fileID: 2100000, guid: 0bdb2bedbb9ee6a4e905f124820a77f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -321,7 +321,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bcddfb70b48417a4491e5c95d2243fd2, type: 2}
+  - {fileID: 2100000, guid: 0bdb2bedbb9ee6a4e905f124820a77f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -339,7 +339,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bcddfb70b48417a4491e5c95d2243fd2, type: 2}
+  - {fileID: 2100000, guid: 0bdb2bedbb9ee6a4e905f124820a77f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -357,7 +357,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bcddfb70b48417a4491e5c95d2243fd2, type: 2}
+  - {fileID: 2100000, guid: 0bdb2bedbb9ee6a4e905f124820a77f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -375,7 +375,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bcddfb70b48417a4491e5c95d2243fd2, type: 2}
+  - {fileID: 2100000, guid: 0bdb2bedbb9ee6a4e905f124820a77f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -393,7 +393,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bcddfb70b48417a4491e5c95d2243fd2, type: 2}
+  - {fileID: 2100000, guid: 0bdb2bedbb9ee6a4e905f124820a77f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -411,7 +411,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: bcddfb70b48417a4491e5c95d2243fd2, type: 2}
+  - {fileID: 2100000, guid: 0bdb2bedbb9ee6a4e905f124820a77f0, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -489,9 +489,9 @@ AudioSource:
   m_GameObject: {fileID: 100010}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 81915d9f2fd4d4b40b314e20757cffd3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 92c39e62098cad043800e32fae314c7d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .25
+  m_Volume: .5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -586,10 +586,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252cef87e637e4241a2490695064d15d, type: 3}
   m_Name: 
-  RunImpulse: 24
-  JumpInterval: 1.5
-  JumpImpulse: 1500
-  JumpProbability: .699999988
+  RunImpulse: 10
+  JumpInterval: 2
+  JumpImpulse: 1550
+  JumpProbability: .300000012
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   Delay: 0
   Duration: 3
-  VolumeScale: .5
+  VolumeScale: 1
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
