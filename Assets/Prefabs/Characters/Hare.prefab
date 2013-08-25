@@ -502,7 +502,7 @@ Rigidbody:
   m_GameObject: {fileID: 100010}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 2
+  m_Drag: 2.5
   m_AngularDrag: 2
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -673,7 +673,7 @@ MonoBehaviour:
   RunImpulse: 32
   JumpInterval: 1.5
   JumpImpulse: 1600
-  JumpProbability: .300000012
+  JumpProbability: .354999989
   JumpSound: {fileID: 8300000, guid: 712412a9a0421a5408ca5111f4bbda55, type: 3}
   Model: {fileID: 100016}
 --- !u!114 &11400006
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Name: 
   Delay: 0
   Duration: 5
-  VolumeScale: .100000001
+  VolumeScale: .150000006
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
