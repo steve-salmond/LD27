@@ -34,12 +34,11 @@ public class Interface : MonoBehaviour {
 		// Get screen dimensions.
 		float w = Screen.width;
 		float h = Screen.height;
-		float cw = w * 0.5f;
-		float tw = w * 0.25f;
-		float th = tw * 0.5f;
+		float tw = h * 0.5f;
+		float th = tw;
 		
 		// Draw race over text.
-		Graphics.DrawTexture(new Rect(cw - tw * 0.5f, h - th - 30, tw, th), Rules);
+		Graphics.DrawTexture(new Rect(30, h - th * 0.75f, tw, th), Rules);
 	}
 		
 	void OnGUIRacing()
@@ -55,7 +54,7 @@ public class Interface : MonoBehaviour {
 		
 		// Draw place suffix (1st,2nd, 3rd etc.)
 		if (place == 1)
-			Graphics.DrawTexture(new Rect(200, h - 100, 50, 50), Text, SuffixStBounds, 0, 0, 0, 0);
+			Graphics.DrawTexture(new Rect(190, h - 100, 50, 50), Text, SuffixStBounds, 0, 0, 0, 0);
 		else if (place == 2)	
 			Graphics.DrawTexture(new Rect(200, h - 100, 50, 50), Text, SuffixNdBounds, 0, 0, 0, 0);
 		else if (place == 3)	

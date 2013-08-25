@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Name: 
   Delay: 0
   Duration: 5
-  VolumeScale: .150000006
+  VolumeScale: .25
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
