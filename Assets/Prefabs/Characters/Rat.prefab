@@ -670,7 +670,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 252cef87e637e4241a2490695064d15d, type: 3}
   m_Name: 
-  RunImpulse: 27
+  RunImpulse: 23
   JumpInterval: 1.5
   JumpImpulse: 1550
   JumpProbability: .349999994

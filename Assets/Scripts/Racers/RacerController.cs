@@ -22,7 +22,7 @@ public class RacerController : MonoBehaviour {
 	public GameObject Model;
 	
 	/** Distance travelled by racer so far (fractional laps). */
-	public float Progress
+	public double Progress
 		{ get; private set; }
 	
 	private Transform t;
@@ -45,7 +45,7 @@ public class RacerController : MonoBehaviour {
 		last = t.position;
 	}
 	
-	void Update () {
+	void FixedUpdate () {
 		
 		// Get racer's axes.
 		Vector3 up = t.position.normalized;
@@ -53,7 +53,8 @@ public class RacerController : MonoBehaviour {
 		
 		// Racers always run as fast as they can.
 		float f = RunImpulse;
-		rigidbody.AddForce(right * f);
+		float s = Time.deltaTime * 60;
+		rigidbody.AddForce(right * f * s);
 		
 		// Add random jump.
 		float pr = JumpProbability * Time.deltaTime;
@@ -87,7 +88,8 @@ public class RacerController : MonoBehaviour {
 	
 		// Apply jump impulse.
 		Vector3 up = t.position.normalized;
-		rigidbody.AddForce(up * JumpImpulse);
+		float s = Time.deltaTime * 60;
+		rigidbody.AddForce(up * JumpImpulse * s);
 		nextJumpTime = Time.time + JumpInterval;
 		
 		audio.PlayOneShot(JumpSound);

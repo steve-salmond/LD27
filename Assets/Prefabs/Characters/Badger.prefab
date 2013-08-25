@@ -892,9 +892,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474c72e75b2d6994e8027a83803cb8de, type: 3}
   m_Name: 
-  RunImpulse: 20
+  RunImpulse: 22
   JumpInterval: 1
-  JumpImpulse: 1250
+  JumpImpulse: 1400
   JumpSound: {fileID: 8300000, guid: 712412a9a0421a5408ca5111f4bbda55, type: 3}
   Model: {fileID: 100016}
 --- !u!114 &11400006

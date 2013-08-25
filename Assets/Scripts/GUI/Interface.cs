@@ -35,8 +35,6 @@ public class Interface : MonoBehaviour {
 		float w = Screen.width;
 		float h = Screen.height;
 		float cw = w * 0.5f;
-		float ch = h * 0.5f;
-		
 		float tw = w * 0.25f;
 		float th = tw * 0.5f;
 		

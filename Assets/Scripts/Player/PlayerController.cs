@@ -35,12 +35,12 @@ public class PlayerController : MonoBehaviour {
 		{ get { return GetPlace(); } }
 	
 	/** Distance travelled by player so far (degrees). */
-	public float Progress
+	public double Progress
 		{ get; private set; }
 	
 	/** Fractional laps travelled by player so far. */
 	public float LapProgress
-		{ get { return Progress / 360; } }
+		{ get { return (float) Progress / 360; } }
 	
 	
 	private Transform t;
@@ -71,6 +71,8 @@ public class PlayerController : MonoBehaviour {
 		Progress = 0;
 		last = t.position;
 		startTime = Time.time;
+		
+		// Application.targetFrameRate = -1;
 	}
 	
 	void Update () {
@@ -88,22 +90,23 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Return))
 			Screen.fullScreen = !Screen.fullScreen;
 		
-		// Can the player race?
-		if (Racing)
-			UpdateInput();
-		
 		// Update player's animation.
 		UpdateAnimation();
-		
-		// Update progress.
-		if (!Finished)
-			UpdateProgress();
 	}
 	
 	/** Reload the game. */
 	void Reload()
 		{ Application.LoadLevel(Application.loadedLevel); }
 		
+	void FixedUpdate()
+	{
+		if (Racing)
+			UpdateInput();
+	
+		// Update progress.
+		if (!Finished)
+			UpdateProgress();
+	}
 	
 	void UpdateInput()
 	{
@@ -116,7 +119,7 @@ public class PlayerController : MonoBehaviour {
 		rigidbody.AddForce(right * f);
 		
 		// Add player jump.
-		if (Input.GetButtonDown("Jump"))
+		if (Input.GetButton("Jump"))
 			Jump();
 		
 	}
