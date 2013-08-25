@@ -18,17 +18,29 @@ public class PlayerController : MonoBehaviour {
 	/** The player's animated model. */
 	public GameObject Model;
 	
+	/** Is player racing? */
+	public bool Racing
+		{ get; private set; }
+
+	/** Has player finished racing? */
+	public bool Finished
+		{ get; private set; }
+	
 	/** Player's current lap. */
 	public int Lap
-		{ get; private set; }
+		{ get { return (int) Mathf.Max(0, Mathf.Min(10, Mathf.Ceil(10 - LapProgress))); } }
 
 	/** Player's current placing. */
 	public int Place
 		{ get { return GetPlace(); } }
 	
-	/** Distance travelled by player so far (fractional laps). */
+	/** Distance travelled by player so far (degrees). */
 	public float Progress
 		{ get; private set; }
+	
+	/** Fractional laps travelled by player so far. */
+	public float LapProgress
+		{ get { return Progress / 360; } }
 	
 	
 	private Transform t;
@@ -39,6 +51,7 @@ public class PlayerController : MonoBehaviour {
 	
 	private RacerController[] Racers;
 	
+	private Vector3 last;
 	
 	/** Player controller instance. */
 	public static PlayerController Instance;
@@ -53,23 +66,40 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		t = transform;
-		Lap = 10;
 		Progress = 0;
+		last = t.position;
 	}
 	
 	void Update () {
+		
+		// Schedule level reload on race completion.
+		if (!Finished && Lap <= 0)
+			Invoke("Reload", 10);
+		
+		// Are we racing?
+		Finished = (Lap <= 0);
+		Racing = (Time.time >= 10) && !Finished;
 		
 		// Go fullscreen on enter.
 		if (Input.GetKeyDown(KeyCode.Return))
 			Screen.fullScreen = !Screen.fullScreen;
 		
 		// Can the player race?
-		if (Time.time >= 10)
+		if (Racing)
 			UpdateInput();
 		
 		// Update player's animation.
 		UpdateAnimation();
+		
+		// Update progress.
+		if (!Finished)
+			UpdateProgress();
 	}
+	
+	/** Reload the game. */
+	void Reload()
+		{ Application.LoadLevel(Application.loadedLevel); }
+		
 	
 	void UpdateInput()
 	{
@@ -120,6 +150,25 @@ public class PlayerController : MonoBehaviour {
 				place++;
 		
 		return place;
+	}
+	
+	void UpdateProgress()
+	{
+		// Measure angle travelled since last frame.
+		float delta = Vector3.Angle(last, t.position);
+		
+		// Check if we're travelling forwards.
+		Vector3 v = Model.transform.InverseTransformDirection(rigidbody.velocity);
+		bool forwards = v.x <= 0;
+		
+		// Update overall angle travelled.
+		float scale = forwards ? 1 : -1;
+		Progress += (delta * scale); 
+		
+		// Update last known position.
+		last = t.position;
+		
+		// Debug.Log("Progress: " + Progress + ", delta: " + delta + ", v: " + v);
 	}
 	
 }

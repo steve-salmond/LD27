@@ -18,6 +18,9 @@ public class RacerController : MonoBehaviour {
 	/** Jump sound. */
 	public AudioClip JumpSound;
 	
+	/** The racer's animated model. */
+	public GameObject Model;
+	
 	/** Distance travelled by racer so far (fractional laps). */
 	public float Progress
 		{ get; private set; }
@@ -32,11 +35,14 @@ public class RacerController : MonoBehaviour {
 	private float checkpointInterval = 0.5f;
 	private float progressThreshold = 0.5f;
 	
+	private Vector3 last;
+	
 	
 	// Use this for initialization
 	void Start () {
 		t = transform;
 		Progress = 0;
+		last = t.position;
 	}
 	
 	void Update () {
@@ -67,6 +73,10 @@ public class RacerController : MonoBehaviour {
 			checkpoint = t.position;
 			nextCheckpointTime = Time.time + checkpointInterval;
 		}
+		
+		// Update overall race progress.
+		if (!PlayerController.Instance.Finished)
+			UpdateProgress();
 				
 	}
 	
@@ -83,13 +93,21 @@ public class RacerController : MonoBehaviour {
 		audio.PlayOneShot(JumpSound);
 	}
 	
-	/*
-	void OnCollisionEnter(Collision collision)
+	void UpdateProgress()
 	{
-		// Jump when racer hits an obstacle.
-		if (collision.collider.tag == "Obstacle")
-			Jump();
+		// Measure angle travelled since last frame.
+		float delta = Vector3.Angle(last, t.position);
+		
+		// Check if we're travelling forwards.
+		Vector3 v = Model.transform.InverseTransformDirection(rigidbody.velocity);
+		bool forwards = v.x <= 0;
+		
+		// Update overall angle travelled.
+		float scale = forwards ? 1 : -1;
+		Progress += (delta * scale); 
+		
+		// Update last known position.
+		last = t.position;
 	}
-	*/
 	
 }

@@ -491,7 +491,7 @@ AudioSource:
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 81915d9f2fd4d4b40b314e20757cffd3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .25
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -591,6 +591,7 @@ MonoBehaviour:
   JumpImpulse: 1650
   JumpProbability: .300000012
   JumpSound: {fileID: 8300000, guid: 712412a9a0421a5408ca5111f4bbda55, type: 3}
+  Model: {fileID: 100016}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
