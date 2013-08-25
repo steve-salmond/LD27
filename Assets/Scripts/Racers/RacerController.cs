@@ -15,6 +15,10 @@ public class RacerController : MonoBehaviour {
 	/** Jump probability. */
 	public float JumpProbability = 0.1f;
 	
+	/** Distance travelled by racer so far (fractional laps). */
+	public float Progress
+		{ get; private set; }
+	
 	private Transform t;
 	
 	private float nextJumpTime = 0;
@@ -29,6 +33,7 @@ public class RacerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		t = transform;
+		Progress = 0;
 	}
 	
 	void Update () {

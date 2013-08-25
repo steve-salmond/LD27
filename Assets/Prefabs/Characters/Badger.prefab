@@ -716,9 +716,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474c72e75b2d6994e8027a83803cb8de, type: 3}
   m_Name: 
-  RunImpulse: 18
+  RunImpulse: 12
   JumpInterval: 1
-  JumpImpulse: 1500
+  JumpImpulse: 1200
   Model: {fileID: 100016}
 --- !u!114 &11400006
 MonoBehaviour:

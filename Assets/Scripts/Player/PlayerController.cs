@@ -15,16 +15,43 @@ public class PlayerController : MonoBehaviour {
 	/** The player's animated model. */
 	public GameObject Model;
 	
+	/** Player's current lap. */
+	public int Lap
+		{ get; private set; }
+
+	/** Player's current placing. */
+	public int Place
+		{ get { return GetPlace(); } }
+	
+	/** Distance travelled by player so far (fractional laps). */
+	public float Progress
+		{ get; private set; }
+	
+	
 	private Transform t;
 	
 	private float nextJumpTime = 0;
 
 	private float moveThreshold = 1f;
 	
+	private RacerController[] Racers;
 	
+	
+	/** Player controller instance. */
+	public static PlayerController Instance;
+	
+	void Awake() {
+		Instance = this;
+		
+		// Locate other competitors.
+		Racers = FindObjectsOfType(typeof(RacerController)) as RacerController[];
+	}
+		
 	// Use this for initialization
 	void Start () {
 		t = transform;
+		Lap = 10;
+		Progress = 0;
 	}
 	
 	void Update () {
@@ -70,5 +97,16 @@ public class PlayerController : MonoBehaviour {
 		else if (!moving && !animation.IsPlaying("Idle"))
 			animation.Play("Idle", AnimationPlayMode.Mix);
 	} 
+	
+	int GetPlace()
+	{
+		int place = 1;
+		
+		foreach (RacerController racer in Racers)
+			if (racer.Progress > Progress)
+				place++;
+		
+		return place;
+	}
 	
 }
