@@ -590,6 +590,7 @@ MonoBehaviour:
   JumpInterval: 1.5
   JumpImpulse: 1550
   JumpProbability: .300000012
+  JumpSound: {fileID: 8300000, guid: 712412a9a0421a5408ca5111f4bbda55, type: 3}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

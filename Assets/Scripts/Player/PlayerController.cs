@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour {
 	/** Impulse to apply to player to get him jumping. */
 	public float JumpImpulse = 18;
 	
+	/** Jump sound. */
+	public AudioClip JumpSound;
+	
 	/** The player's animated model. */
 	public GameObject Model;
 	
@@ -79,12 +82,22 @@ public class PlayerController : MonoBehaviour {
 		rigidbody.AddForce(right * f);
 		
 		// Add player jump.
-		if (Input.GetButtonDown("Jump") && Time.time >= nextJumpTime)
-		{
-			rigidbody.AddForce(up * JumpImpulse);
-			nextJumpTime = Time.time + JumpInterval;
-		}
+		if (Input.GetButtonDown("Jump"))
+			Jump();
 		
+	}
+	
+	void Jump()
+	{
+		if (Time.time < nextJumpTime)
+			return;
+	
+		// Apply jump impulse.
+		Vector3 up = t.position.normalized;
+		rigidbody.AddForce(up * JumpImpulse);
+		nextJumpTime = Time.time + JumpInterval;
+
+		audio.PlayOneShot(JumpSound);
 	}
 	
 	void UpdateAnimation()

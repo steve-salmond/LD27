@@ -15,6 +15,9 @@ public class RacerController : MonoBehaviour {
 	/** Jump probability. */
 	public float JumpProbability = 0.1f;
 	
+	/** Jump sound. */
+	public AudioClip JumpSound;
+	
 	/** Distance travelled by racer so far (fractional laps). */
 	public float Progress
 		{ get; private set; }
@@ -76,6 +79,8 @@ public class RacerController : MonoBehaviour {
 		Vector3 up = t.position.normalized;
 		rigidbody.AddForce(up * JumpImpulse);
 		nextJumpTime = Time.time + JumpInterval;
+		
+		audio.PlayOneShot(JumpSound);
 	}
 	
 	/*
